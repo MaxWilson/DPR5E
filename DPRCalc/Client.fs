@@ -57,8 +57,8 @@ module Client =
             Compute = (fun e ->
                 let n, tohit, dice, size, plus, ac = getInt N.Value, getInt ToHit.Value, getInt Dice.Value, getInt Size.Value, getInt Plus.Value, getInt AC.Value
                 let hitRate = match (21 - ac) + tohit with
-                                | x when x > 20 -> 0.95
-                                | x when x < 1 -> 0.05
+                                | x when x >= 20 -> 0.95
+                                | x when x <= 1 -> 0.05
                                 | x -> (float x) / 20.
                 // dpr = regular hit percentage * damage plus 
                 let regularDpr = (float n) * hitRate * ((float (size * 2) * float dice) / 2. + float plus)
