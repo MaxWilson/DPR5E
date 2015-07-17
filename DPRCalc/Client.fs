@@ -61,7 +61,7 @@ module Client =
                                 | x when x <= 1 -> 0.05
                                 | x -> (float x) / 20.
                 // dpr = regular hit percentage * damage plus 
-                let regularDpr = (float n) * hitRate * ((float (size * 2) * float dice) / 2. + float plus)
+                let regularDpr = (float n) * hitRate * ((float (size + 1) * float dice) / 2. + float plus)
                 let critDpr = (((float (size * 2) * float dice) / 2.) / 20.)
                 let dpr = regularDpr + critDpr
                 People.Add(sprintf "%dx +%d for %dd%d+%d vs AC %d = %f DPR" n tohit dice size plus ac dpr)
